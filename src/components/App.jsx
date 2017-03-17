@@ -1,34 +1,45 @@
 import React, {Component} from 'react';
 import MessageList from './MessageList.jsx';
-import material from 'material-ui';
+import ChannelList from './ChannelList.jsx';
+import MessageBox from './MessageBox.jsx';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import AppBar from 'material-ui/AppBar';
+import {deepOrange500} from 'material-ui/styles/colors';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
-var ThemeManager = new material.Styles.ThemeManager();
-var Colors = material.Styles.Colors;
-var AppBar = material.AppBar;
+const muiTheme = getMuiTheme({
+    appBar: {
+        height: 70
+    }
+});
 
 class App extends Component {
-    constructor() {
-        super();
-        ThemeManager.setPalette({
-            primary1Color: Colors.blue500,
-            primary2Color: Colors.blue700,
-            primary3Color: Colors.blue100,
-            accent1Color: Colors.pink400,
-        });
-    }
-    static childContextTypes = {
-        muiTheme: React.PropTypes.object
-    };
-
-    getChildContext() {
-        return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        }
+    constructor(props) {
+        super(props);
     }
 
     render() {
         return (
-            <MessageList />
+            <MuiThemeProvider muiTheme={muiTheme}>
+                <div>
+                    <AppBar title="React chat app"/>
+                    <div style={{
+                        display: 'flex',
+                        flexFlow: 'row wrap',
+                        maxWidth: 1200,
+                        width: '100%',
+                        margin: '30px auto 30px'
+                    }}>
+                        <ChannelList />
+                        <MessageList />
+                               
+                    </div> 
+                    <MessageBox />                         
+                </div>
+            </MuiThemeProvider>
+                    
         );
     }
 }
