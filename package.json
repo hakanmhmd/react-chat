@@ -15,6 +15,8 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.5.0",
     "css-loader": "^0.27.3",
+    "firebase": "^3.7.2",
+    "lodash": "^4.17.4",
     "material-ui": "^0.17.1",
     "node-sass": "^4.5.0",
     "react": "^15.4.2",
@@ -23,6 +25,7 @@
     "react-tap-event-plugin": "^2.0.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.14.1",
+    "trim": "0.0.1",
     "webpack": "^2.2.1"
   },
   "devDependencies": {

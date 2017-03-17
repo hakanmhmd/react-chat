@@ -11,7 +11,7 @@ class Message extends React.Component {
         return (
             <ListItem
                 primaryText={this.props.message}
-                leftAvatar={<Avatar src = "https://lh5.googleusercontent.com/aMtc8NcVRue9OYFhRsozCIWaXo9KlQnhvGXXzqActEViVetMrYCFGY98ZqCw-FmCKWAJcR3COjGUxwIucK0p9u9sTu3ih4-7Fyg5_mGLSrbwQUJOOFKSAdXPLA73RLSNSIzaU4QA" />}
+                leftAvatar={<Avatar src={this.props.avatar} />}
             />
         );
     }
