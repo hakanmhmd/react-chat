@@ -24,7 +24,8 @@ class MessageBox extends React.Component {
 
             database.ref('/messages').push({
                 text: this.state.messageToSend,
-                profilePic: "https://lh5.googleusercontent.com/aMtc8NcVRue9OYFhRsozCIWaXo9KlQnhvGXXzqActEViVetMrYCFGY98ZqCw-FmCKWAJcR3COjGUxwIucK0p9u9sTu3ih4-7Fyg5_mGLSrbwQUJOOFKSAdXPLA73RLSNSIzaU4QA"
+                profilePic: "https://lh5.googleusercontent.com/aMtc8NcVRue9OYFhRsozCIWaXo9KlQnhvGXXzqActEViVetMrYCFGY98ZqCw-FmCKWAJcR3COjGUxwIucK0p9u9sTu3ih4-7Fyg5_mGLSrbwQUJOOFKSAdXPLA73RLSNSIzaU4QA",
+                date: 'now'   
             });
         }
 

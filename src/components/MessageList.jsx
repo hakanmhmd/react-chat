@@ -3,7 +3,7 @@ import Message from './Message.jsx';
 import {Card} from 'material-ui/Card';
 import {List} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
-import database from '../../database.js';
+import firebase from '../../database.js';
 import _ from 'lodash';
 
 class MessageList extends React.Component {
@@ -13,7 +13,7 @@ class MessageList extends React.Component {
             messages: {}
         }
 
-        database.ref('/messages').on('child_added', msg => {
+        firebase.database().ref('/messages').on('child_added', msg => {
             if(this.state.messages[msg.key]){
                 return;
             }
@@ -23,7 +23,7 @@ class MessageList extends React.Component {
             this.setState({messages: this.state.messages});
         });
 
-        database.ref('/messages').on('child_removed', msg => {
+        firebase.database().ref('/messages').on('child_removed', msg => {
             var key = msg.key;
             delete this.state.messages[key];
             this.setState({messages: this.state.messages});
