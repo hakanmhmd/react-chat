@@ -2,6 +2,15 @@ import alt from '../alt/index';
 import firebase from '../../database.js';
 
 class Actions {
+    constructor(){
+        this.generateActions(
+            'channelsReceived',
+            'channelsFailed',
+            'messagesRecevied',
+            'messagesFailed'
+        );
+    }
+
     login(args){
         return (dispatch) => {
             var auth = firebase.auth();

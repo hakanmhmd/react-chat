@@ -37,7 +37,6 @@ class MessageList extends React.Component {
                     <Message key={message.key} avatar={message.profilePic} message={message.text} />
                 );
             });
-
         return (
             <Card style={{
                 flexGrow: 2,
