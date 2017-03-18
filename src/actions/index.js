@@ -6,8 +6,14 @@ class Actions {
         this.generateActions(
             'channelsReceived',
             'channelsFailed',
-            'messagesRecevied',
-            'messagesFailed'
+            'messagesReceived',
+            'messageReceived',
+            'messagesFailed',
+            'channelOpened',
+            'messagesLoading',
+            'sendMessage',
+            'messageSendSuccess',
+            'messageSendError'
         );
     }
 

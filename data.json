@@ -1,7 +1,7 @@
 {
     "messages":{
         "firebase":{
-            "0": {
+            "firebase_msg": {
                 "text": "Hi, how are you?",
                 "date": "Wed, 08 Jul 2015 18:45:22 GMT",
                 "author": "Hakan",
@@ -9,7 +9,7 @@
             }
         },
         "flux":{
-            "1":{
+            "flux_msg":{
                 "text": "I am ok, thanks. How about yourself?",
                 "date": "Wed, 08 Jul 2015 18:47:22 GMT",
                 "author": "Mehmed",

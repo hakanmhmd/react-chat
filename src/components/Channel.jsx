@@ -1,9 +1,14 @@
 import React from 'react';
 import {List, ListItem} from 'material-ui/List';
+import Actions from '../actions/index.js';
 
 class Channel extends React.Component {
     constructor(props) {
         super(props);
+    }
+
+    onChannelClick() {
+        Actions.channelOpened(this.props.channel);
     }
 
     render() {
@@ -12,7 +17,11 @@ class Channel extends React.Component {
             style.backgroundColor = '#f0f0f0';
         }
         return (
-            <ListItem style={style}>{this.props.channel.name}</ListItem>
+            <ListItem 
+                style={style}
+                onClick={this.onChannelClick.bind(this)}>
+                {this.props.channel.name}
+            </ListItem>
         );
     }
 }

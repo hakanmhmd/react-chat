@@ -4,39 +4,47 @@ import {Card} from 'material-ui/Card';
 import {List} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import firebase from '../../database.js';
+import connectToStores from 'alt-utils/lib/connectToStores';
+import ChatStore from '../stores/ChatStore.js';
+import CircularProgress from 'material-ui/CircularProgress';
 import _ from 'lodash';
 
+@connectToStores
 class MessageList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            messages: {}
-        }
+    }
 
-        firebase.database().ref('/messages').on('child_added', msg => {
-            if(this.state.messages[msg.key]){
-                return;
-            }
-            let msgVal = msg.val();
-            msgVal.key = msg.key;
-            this.state.messages[msgVal.key] = msgVal;
-            this.setState({messages: this.state.messages});
-        });
+    static getStores(){
+        return [ChatStore];
+    }
 
-        firebase.database().ref('/messages').on('child_removed', msg => {
-            var key = msg.key;
-            delete this.state.messages[key];
-            this.setState({messages: this.state.messages});
-        });
+    static getPropsFromStores(){
+        return ChatStore.getState();
     }
 
     render() {
-        var messageNodes = _.values(this.state.messages)
-            .map((message) => {
+        let messageNodes = null;
+
+        if(!this.props.messagesLoading){
+            messageNodes = _.values(this.props.messages).map((message) => {
                 return (
                     <Message key={message.key} avatar={message.profilePic} message={message.text} />
                 );
             });
+        } else {
+            messageNodes = <CircularProgress mode="indeterminate"
+                style={{
+                    paddingTop: 20,
+                    paddingBottom: 20,
+                    margin: '0 auto',
+                    display: 'block',
+                    width: '60px'
+                }} />;
+        }
+
+        
+
         return (
             <Card style={{
                 flexGrow: 2,

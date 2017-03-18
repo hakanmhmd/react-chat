@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card} from 'material-ui/Card';
 import trim from 'trim';
-import database from '../../database.js';
+import Actions from '../actions/index.js';
 
 class MessageBox extends React.Component {
     constructor(props) {
@@ -22,11 +22,8 @@ class MessageBox extends React.Component {
                 messageToSend: ''
             });
 
-            database.ref('/messages').push({
-                text: this.state.messageToSend,
-                profilePic: "https://lh5.googleusercontent.com/aMtc8NcVRue9OYFhRsozCIWaXo9KlQnhvGXXzqActEViVetMrYCFGY98ZqCw-FmCKWAJcR3COjGUxwIucK0p9u9sTu3ih4-7Fyg5_mGLSrbwQUJOOFKSAdXPLA73RLSNSIzaU4QA",
-                date: 'now'   
-            });
+            Actions.sendMessage(this.state.messageToSend);
+            
         }
 
         
